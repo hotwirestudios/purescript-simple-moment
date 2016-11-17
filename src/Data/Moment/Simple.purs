@@ -2,6 +2,7 @@
 module Data.Moment.Simple
   ( fromDate
   , fromEpoch
+  , fromUTC
   , calendar
   , format
   , formatUTC
