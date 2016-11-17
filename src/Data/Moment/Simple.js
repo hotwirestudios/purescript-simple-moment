@@ -19,6 +19,10 @@ exports.fromEpoch_ = function (a) {
   return moment(a);
 };
 
+exports.fromUTC_ = function (a) {
+  return moment.utc(a);
+};
+
 exports.formatISO8601_ = function (m) {
   return m.format();
 };

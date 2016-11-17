@@ -45,6 +45,14 @@ foreign import formatISO8601_ :: Moment -> String
 foreign import setUTC_ :: Moment -> Moment
 foreign import format_ :: Fn2 String Moment String
 
+foreign import fromUTC_ :: Number -> Moment
+
+fromUTC :: Milliseconds -> Maybe Moment
+fromUTC (Milliseconds i) = do
+  let m = fromUTC_ i
+  guard $ isValid m
+  pure m
+
 setUTC :: Moment -> Moment
 setUTC = clone >>> setUTC_
 
