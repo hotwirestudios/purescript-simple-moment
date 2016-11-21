@@ -19,6 +19,16 @@ exports.fromEpoch_ = function (a) {
   return moment(a);
 };
 
+exports.fromString_ = function (str) {
+  return function (format) {
+    return function (strict) {
+      return function () {
+        return moment(str, format, strict);
+      }
+    };
+  };
+};
+
 exports.fromUTC_ = function (a) {
   return moment.utc(a);
 };

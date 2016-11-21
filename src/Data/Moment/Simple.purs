@@ -2,6 +2,8 @@
 module Data.Moment.Simple
   ( fromDate
   , fromEpoch
+  , fromString
+  , ParsingMode(..)
   , fromUTC
   , calendar
   , longDateFormat
@@ -20,7 +22,7 @@ import Control.MonadPlus (guard)
 import Data.Date (Date())
 import Data.JSDate (LOCALE)
 import Data.Function.Uncurried (Fn2(), runFn2)
-import Data.Maybe (Maybe())
+import Data.Maybe (Maybe(Nothing, Just))
 import Data.Time.Duration (Milliseconds(..))
 
 import Data.Moment.Simple.Internal (isValid, clone)
@@ -46,6 +48,21 @@ foreign import formatISO8601_ :: Moment -> String
 
 foreign import setUTC_ :: Moment -> Moment
 foreign import format_ :: Fn2 String Moment String
+
+foreign import fromString_ :: forall eff. String -> String -> Boolean -> Eff (locale :: LOCALE | eff) Moment
+
+data ParsingMode = Strict | Forgiving
+
+fromString :: forall eff. ParsingMode -> String -> String -> Eff (locale :: LOCALE | eff) (Maybe Moment)
+fromString parsingMode f str = do
+  m <- fromString_ str f p
+  if isValid m
+    then pure $ Just m
+    else pure Nothing
+  where
+    p = case parsingMode of
+          Strict -> true
+          Forgiving -> false
 
 foreign import fromUTC_ :: Number -> Moment
 
