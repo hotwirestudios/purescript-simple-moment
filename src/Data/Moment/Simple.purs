@@ -4,6 +4,7 @@ module Data.Moment.Simple
   , fromEpoch
   , fromUTC
   , calendar
+  , longDateFormat
   , format
   , formatUTC
   , formatISO8601
@@ -56,6 +57,9 @@ fromUTC (Milliseconds i) = do
 
 setUTC :: Moment -> Moment
 setUTC = clone >>> setUTC_
+
+-- | Gets the full format string of abbreviated date-time formats LT, L, LL and so on
+foreign import longDateFormat :: forall eff. String -> Eff (locale :: LOCALE | eff) String
 
 -- | Format with the given string, respecting the user's locale.
 format :: forall eff. String -> Moment -> Eff (locale :: LOCALE | eff) String

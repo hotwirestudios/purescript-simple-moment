@@ -27,6 +27,12 @@ exports.formatISO8601_ = function (m) {
   return m.format();
 };
 
+exports.longDateFormat = function (f) {
+  return function () {
+    return moment.localeData().longDateFormat(f);
+  };
+};
+
 exports.format_ = function (s, m) {
   return m.format(s);
 };
