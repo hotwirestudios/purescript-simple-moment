@@ -11,6 +11,7 @@ module Data.Moment.Simple
   , formatUTC
   , formatISO8601
   , formatUTCISO8601
+  , toEpoch
   , module Data.Moment.Simple.Types
   ) where
 
@@ -93,3 +94,8 @@ formatUTC s m = runFn2 format_ s $ setUTC m
 -- | Format according to ISO-8601, ignoring the locale timezone.
 formatUTCISO8601 :: Moment -> String
 formatUTCISO8601 = setUTC >>> formatISO8601_
+
+foreign import toEpoch_ :: Moment -> Number
+
+toEpoch :: Moment -> Milliseconds
+toEpoch = Milliseconds <<< toEpoch_

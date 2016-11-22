@@ -50,3 +50,7 @@ exports.format_ = function (s, m) {
 exports.setUTC_ = function (m) {
   return m.utc();
 };
+
+exports.toEpoch_ = function (m) {
+  return m.valueOf();
+};
