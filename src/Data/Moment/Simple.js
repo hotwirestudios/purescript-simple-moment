@@ -56,13 +56,9 @@ exports.toEpoch_ = function (m) {
 };
 
 exports.today = function () {
-  return function () {
-    return moment({ h: 0, m: 0, s: 0 });
-  };
+  return moment({ h: 0, m: 0, s: 0 });
 };
 
 exports.now = function () {
-  return function () {
-    return moment();
-  };
+  return moment();
 };
