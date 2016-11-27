@@ -30,7 +30,7 @@ exports.fromString_ = function (str) {
 };
 
 exports.utcDate = function (m) {
-  return moment.utc({ year: m.year(), month: m.month(), day: m.dayOfMonth() });
+  return moment.utc({ year: m.year(), month: m.month(), day: m.date() });
 };
 
 exports.fromUTCString_ = function (str) {
