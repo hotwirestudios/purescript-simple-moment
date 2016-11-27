@@ -5,6 +5,7 @@ module Data.Moment.Simple
   , fromString
   , ParsingMode(..)
   , fromUTC
+  , setUTC
   , calendar
   , longDateFormat
   , format
