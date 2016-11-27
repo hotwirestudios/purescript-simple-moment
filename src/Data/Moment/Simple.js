@@ -29,6 +29,14 @@ exports.fromString_ = function (str) {
   };
 };
 
+exports.fromUTCString_ = function (str) {
+  return function (format) {
+    return function (strict) {
+      return moment.utc(str, format, strict);
+    };
+  };
+};
+
 exports.fromUTC_ = function (a) {
   return moment.utc(a);
 };

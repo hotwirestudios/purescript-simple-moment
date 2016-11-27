@@ -3,6 +3,7 @@ module Data.Moment.Simple
   ( fromDate
   , fromEpoch
   , fromString
+  , fromUTCString
   , ParsingMode(..)
   , fromUTC
   , setUTC
@@ -63,6 +64,19 @@ fromString parsingMode f str = do
   if isValid m
     then pure $ Just m
     else pure Nothing
+  where
+    p = case parsingMode of
+          Strict -> true
+          Forgiving -> false
+
+foreign import fromUTCString_ :: String -> String -> Boolean -> Moment
+
+fromUTCString :: ParsingMode -> String -> String -> Maybe Moment
+fromUTCString parsingMode f str = do
+  let m = fromUTCString_ str f p
+  if isValid m
+    then Just m
+    else Nothing
   where
     p = case parsingMode of
           Strict -> true
