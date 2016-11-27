@@ -7,6 +7,7 @@ module Data.Moment.Simple
   , ParsingMode(..)
   , fromUTC
   , setUTC
+  , utcDate
   , calendar
   , longDateFormat
   , format
@@ -81,6 +82,8 @@ fromUTCString parsingMode f str = do
     p = case parsingMode of
           Strict -> true
           Forgiving -> false
+
+foreign import utcDate :: Moment -> Moment
 
 foreign import fromUTC_ :: Number -> Moment
 

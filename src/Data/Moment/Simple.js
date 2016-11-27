@@ -29,6 +29,10 @@ exports.fromString_ = function (str) {
   };
 };
 
+exports.utcDate = function (m) {
+  return moment.utc({ year: m.year(), month: m.month(), day: m.dayOfMonth() });
+};
+
 exports.fromUTCString_ = function (str) {
   return function (format) {
     return function (strict) {
