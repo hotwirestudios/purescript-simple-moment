@@ -17,6 +17,7 @@ module Data.Moment.Simple
   , toEpoch
   , today
   , now
+  , startOfDay
   , module Data.Moment.Simple.Types
   ) where
 
@@ -122,3 +123,4 @@ toEpoch = Milliseconds <<< toEpoch_
 
 foreign import today :: forall eff. Eff (locale :: LOCALE, now :: NOW | eff) Moment
 foreign import now :: forall eff. Eff (locale :: LOCALE, now :: NOW | eff) Moment
+foreign import startOfDay :: forall eff. Moment -> Eff (locale :: LOCALE | eff) Moment

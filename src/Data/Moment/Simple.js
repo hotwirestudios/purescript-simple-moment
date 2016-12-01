@@ -74,3 +74,9 @@ exports.today = function () {
 exports.now = function () {
   return moment();
 };
+
+exports.startOfDay = function (m) {
+  return function () {
+    return m.startOf('day');
+  };
+};
