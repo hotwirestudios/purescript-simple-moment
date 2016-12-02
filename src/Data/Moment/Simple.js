@@ -77,6 +77,6 @@ exports.now = function () {
 
 exports.startOfDay = function (m) {
   return function () {
-    return m.startOf('day');
+    return m.clone().startOf('day');
   };
 };
