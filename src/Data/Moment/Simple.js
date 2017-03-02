@@ -80,3 +80,9 @@ exports.startOfDay = function (m) {
     return m.clone().startOf('day');
   };
 };
+
+exports.endOfDay = function (m) {
+  return function () {
+    return m.clone().endOf('day');
+  };
+};
